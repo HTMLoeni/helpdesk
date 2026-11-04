@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { supabaseApi } from '../supabaseClient'
 
 export const LaporForm = ({ onAddTicket }) => {
   const [formData, setFormData] = useState({
@@ -53,7 +54,7 @@ export const LaporForm = ({ onAddTicket }) => {
     setFormData(prev => ({ ...prev, gambar: null }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     if (!formData.judul.trim() || !formData.deskripsi.trim() || !formData.lokasi.trim()) {
       alert('Harap lengkapi judul, deskripsi, dan lokasi aduan Anda.')
@@ -64,29 +65,43 @@ export const LaporForm = ({ onAddTicket }) => {
 
     // Generate Ticket ID
     const randomNum = Math.floor(1000 + Math.random() * 9000)
-    const newTicketCode = `#TKT-${randomNum}`
+    const newTicketCode = `TKT-${randomNum}`
     const today = new Date().toLocaleDateString('id-ID', {
       day: 'numeric',
       month: 'short',
       year: 'numeric'
     })
 
-    const newTicket = {
-      id: Date.now(),
-      tiket: newTicketCode,
-      kategori: formData.kategori,
-      instansi: formData.instansi,
-      judul: formData.judul,
-      deskripsi: formData.deskripsi,
-      lokasi: formData.lokasi,
-      pengadap: formData.isAnonim ? 'Anonim (Identitas Terlindungi)' : (formData.nama.trim() || 'Warga'),
-      status: 'Diverifikasi',
-      tanggal: `${today}, ${new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' })} WIB`,
-      gambarAwal: formData.gambar || 'https://images.unsplash.com/photo-1590486803833-1c5dc8ddd4c8?auto=format&fit=crop&w=600&q=80',
-      rating: 5.0
+    const payload = {
+      nomor_tiket: newTicketCode,
+      nama_pelapor: formData.isAnonim ? 'Anonim (Identitas Terlindungi)' : (formData.nama.trim() || 'Warga'),
+      kategori_layanan: formData.kategori,
+      isi_laporan: `${formData.judul}\n\n${formData.deskripsi}`,
+      lokasi_kejadian: formData.lokasi,
+      instansi_tujuan: formData.instansi,
+      lampiran_bukti: formData.gambar || null,
+      rating_kepuasan: null,
+      status: 'baru',
     }
 
-    setTimeout(() => {
+    try {
+      const inserted = await supabaseApi.insert(payload)
+
+      const newTicket = {
+        id: inserted.id || Date.now(),
+        tiket: `#${newTicketCode}`,
+        kategori: formData.kategori,
+        instansi: formData.instansi,
+        judul: formData.judul,
+        deskripsi: formData.deskripsi,
+        lokasi: formData.lokasi,
+        pengadap: formData.isAnonim ? 'Anonim (Identitas Terlindungi)' : (formData.nama.trim() || 'Warga'),
+        status: 'Diverifikasi',
+        tanggal: `${today}, ${new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' })} WIB`,
+        gambarAwal: formData.gambar || 'https://images.unsplash.com/photo-1590486803833-1c5dc8ddd4c8?auto=format&fit=crop&w=600&q=80',
+        rating: 5.0
+      }
+
       if (onAddTicket) {
         onAddTicket(newTicket)
       }
@@ -104,7 +119,10 @@ export const LaporForm = ({ onAddTicket }) => {
         isAnonim: false,
         gambar: null
       })
-    }, 600)
+    } catch (err) {
+      setIsSubmitting(false)
+      alert('Gagal menyimpan pengaduan ke database: ' + (err.message || 'Terjadi kesalahan.'))
+    }
   }
 
   return (
