@@ -17,7 +17,7 @@ export const pengaduanData = [
   {
     id: 2,
     tiket: "#TKT-8839",
-    kategori: "Lingkungan Hidup",
+    kategori: "Lingkungan Hidup test",
     judul: "Timbunan Sampah Liar & Bau di Pinggir Saluran Irigasi Desa",
     status: "Diproses",
     lokasi: "Desa Mengkid, Kecamatan Mlati",

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -29,6 +30,9 @@ export const Header = () => {
             <a className="px-3 py-2 rounded-lg text-on-surface hover:text-primary hover:bg-surface-container font-label-md transition-colors" href="#lacak-tiket">Lacak Tiket</a>
             <a className="px-3 py-2 rounded-lg text-on-surface hover:text-primary hover:bg-surface-container font-label-md transition-colors" href="#aduan-publik">Aduan Publik</a>
             <a className="px-3 py-2 rounded-lg text-on-surface hover:text-primary hover:bg-surface-container font-label-md transition-colors" href="#alur-faq">Alur &amp; FAQ</a>
+            <Link to="/manajemen-pengaduan" className="px-3 py-2 rounded-lg text-on-surface hover:text-primary hover:bg-surface-container font-label-md transition-colors">
+              Manajemen Pengaduan
+            </Link>
           </nav>
         </div>
         <div className="flex items-center gap-3">
@@ -58,6 +62,9 @@ export const Header = () => {
           <a onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 rounded-lg hover:bg-surface-container text-on-surface font-label-md" href="#lacak-tiket">Lacak Tiket</a>
           <a onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 rounded-lg hover:bg-surface-container text-on-surface font-label-md" href="#aduan-publik">Aduan Publik</a>
           <a onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 rounded-lg hover:bg-surface-container text-on-surface font-label-md" href="#alur-faq">Alur &amp; FAQ</a>
+          <Link to="/manajemen-pengaduan" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 rounded-lg hover:bg-surface-container text-on-surface font-label-md">
+            Manajemen Pengaduan
+          </Link>
         </div>
       )}
     </header>
