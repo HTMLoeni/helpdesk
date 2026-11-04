@@ -1,9 +1,21 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useAuth, signOut } from '../auth'
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const { user } = useAuth()
+  const navigate = useNavigate()
+
+  const handleSignOut = async () => {
+    try {
+      await signOut()
+      navigate('/', { replace: true })
+    } catch {
+      // Silently ignore sign out errors
+    }
+  }
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10)
@@ -36,6 +48,26 @@ export const Header = () => {
           </nav>
         </div>
         <div className="flex items-center gap-3">
+          {user ? (
+            <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-primary font-label-md transition-colors">
+              <span className="font-body-sm text-body-sm text-on-surface">{user.email}</span>
+              <button
+                type="button"
+                onClick={handleSignOut}
+                className="ml-2 px-3 py-1.5 rounded-lg bg-error text-on-error font-label-sm text-label-sm font-semibold hover:bg-error-container transition-colors"
+              >
+                Keluar
+              </button>
+            </div>
+          ) : (
+            <Link
+              to="/login"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md transition-colors shadow-sm transition-all"
+            >
+              <span className="material-symbols-outlined text-[18px]">login</span>
+              Masuk
+            </Link>
+          )}
           <a className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-primary font-label-md transition-colors" href="#lacak-tiket">
             <span className="material-symbols-outlined text-[18px]">verified</span>
             Cek Status
@@ -65,6 +97,16 @@ export const Header = () => {
           <Link to="/manajemen-pengaduan" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 rounded-lg hover:bg-surface-container text-on-surface font-label-md">
             Manajemen Pengaduan
           </Link>
+          {user ? (
+            <div className="px-3 py-2 rounded-lg hover:bg-surface-container text-on-surface font-label-md flex items-center gap-2">
+              <span>{user.email}</span>
+              <button onClick={handleSignOut} className="text-error hover:text-error-container">Keluar</button>
+            </div>
+          ) : (
+            <Link to="/login" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 rounded-lg hover:bg-surface-container text-on-surface font-label-md">
+              Masuk
+            </Link>
+          )}
         </div>
       )}
     </header>

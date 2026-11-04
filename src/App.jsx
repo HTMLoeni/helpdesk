@@ -11,6 +11,9 @@ import FAQ from './components/FAQ'
 import CTABanner from './components/CTABanner'
 import Footer from './components/Footer'
 import ManajemenPengaduan from './components/ManajemenPengaduan'
+import Login from './Login'
+import Register from './Register'
+import ProtectedRoute from './ProtectedRoute'
 import { pengaduanData } from './data'
 
 function App() {
@@ -39,7 +42,13 @@ function App() {
             <Footer />
           </>
         } />
-        <Route path="/manajemen-pengaduan" element={<ManajemenPengaduan />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/manajemen-pengaduan" element={
+          <ProtectedRoute>
+            <ManajemenPengaduan />
+          </ProtectedRoute>
+        } />
       </Routes>
     </div>
   )
