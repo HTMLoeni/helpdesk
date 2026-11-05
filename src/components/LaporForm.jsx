@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { supabaseApi } from '../supabaseClient'
+import { MdCheckCircle, MdClose, MdLocationOn, MdDelete, MdAddAPhoto, MdSend, MdRefresh } from 'react-icons/md'
 
 export const LaporForm = ({ onAddTicket }) => {
   const [formData, setFormData] = useState({
@@ -144,7 +145,7 @@ export const LaporForm = ({ onAddTicket }) => {
           <div className="mb-space-lg p-6 rounded-2xl bg-secondary-container/50 border border-secondary-container flex flex-col md:flex-row items-center justify-between gap-4 transition-all">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-on-primary shrink-0 shadow-sm">
-                <span className="material-symbols-outlined text-[28px]">check_circle</span>
+                <MdCheckCircle size={28} className="text-on-primary" />
               </div>
               <div>
                 <h4 className="font-title-md text-title-md text-on-surface font-bold">Laporan Berhasil Diterbitkan!</h4>
@@ -163,7 +164,7 @@ export const LaporForm = ({ onAddTicket }) => {
                 className="p-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors"
                 title="Tutup Notifikasi"
               >
-                <span className="material-symbols-outlined">close</span>
+                <MdClose />
               </button>
             </div>
           </div>
@@ -229,7 +230,7 @@ export const LaporForm = ({ onAddTicket }) => {
                 Lokasi Kejadian Lengkap <span className="text-error">*</span>
               </label>
               <div className="relative">
-                <span className="material-symbols-outlined absolute left-3 top-3.5 text-outline text-[20px]">location_on</span>
+                <MdLocationOn size={20} className="absolute left-3 top-3.5 text-outline" />
                 <input 
                   type="text" 
                   name="lokasi" 
@@ -328,7 +329,7 @@ export const LaporForm = ({ onAddTicket }) => {
                     onClick={handleRemoveImage}
                     className="px-3 py-2 rounded-xl bg-error/10 text-error hover:bg-error/20 font-label-sm font-semibold transition-colors flex items-center gap-1"
                   >
-                    <span className="material-symbols-outlined text-[18px]">delete</span>
+                    <MdDelete size={18} />
                     Hapus Foto
                   </button>
                 </div>
@@ -343,7 +344,7 @@ export const LaporForm = ({ onAddTicket }) => {
                   />
                   <label htmlFor="fotoBuktiClean" className="cursor-pointer flex flex-col items-center justify-center gap-2">
                     <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                      <span className="material-symbols-outlined text-[28px]">add_a_photo</span>
+                      <MdAddAPhoto size={28} className="text-primary" />
                     </div>
                     <span className="font-label-md text-label-md text-on-surface font-medium">Klik untuk memilih foto bukti dari perangkat Anda</span>
                     <span className="text-caption text-caption text-on-surface-variant">Mendukung format JPG, PNG maks 5MB</span>
@@ -359,12 +360,12 @@ export const LaporForm = ({ onAddTicket }) => {
             >
               {isSubmitting ? (
                 <>
-                  <span className="animate-spin material-symbols-outlined text-[22px]">progress_activity</span>
+                  <MdRefresh size={22} className="animate-spin" />
                   <span>Menerbitkan Laporan...</span>
                 </>
               ) : (
                 <>
-                  <span className="material-symbols-outlined text-[22px]">send</span>
+                  <MdSend size={22} />
                   <span>Kirim Laporan Resmi</span>
                 </>
               )}

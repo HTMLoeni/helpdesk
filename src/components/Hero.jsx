@@ -1,3 +1,5 @@
+import { MdVerifiedUser, MdEditDocument, MdLock, MdBolt, MdStar, MdTrendingUp, MdSearch } from 'react-icons/md'
+
 export const Hero = () => {
   return (
     <section className="w-full bg-surface-container-low/70 py-space-xl relative overflow-hidden">
@@ -5,7 +7,7 @@ export const Hero = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
           <div className="lg:col-span-7 flex flex-col gap-space-md">
             <div className="inline-flex items-center gap-2 self-start px-3 py-1.5 rounded-full bg-secondary-container text-on-secondary-container text-label-sm font-label-sm shadow-sm">
-              <span className="material-symbols-outlined text-[18px]">verified_user</span>
+              <MdVerifiedUser size={18} className="text-on-secondary-container" />
               Kanal Resmi Pengaduan Pemerintah Daerah Terbuka &amp; Terlindungi
             </div>
             <h1 className="font-display-hero text-headline-lg lg:text-display-hero text-on-surface leading-tight tracking-tight">
@@ -16,21 +18,21 @@ export const Hero = () => {
             </p>
             <div className="flex flex-wrap items-center gap-space-sm pt-2">
               <a className="inline-flex items-center justify-center gap-2 px-space-lg py-3 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-title-md text-title-md shadow-md transition-all" href="#lapor-form">
-                <span className="material-symbols-outlined text-[20px]">edit_document</span>
+                <MdEditDocument size={20} className="text-on-primary" />
                 Buat Laporan Baru
               </a>
               <a className="inline-flex items-center justify-center gap-2 px-space-lg py-3 rounded-lg bg-surface-container-lowest hover:bg-surface-container text-primary font-title-md text-title-md shadow-sm transition-all" href="#lacak-tiket">
-                <span className="material-symbols-outlined text-[20px]">search_check</span>
+                <MdSearch size={20} className="text-primary" />
                 Lacak Status Tiket
               </a>
             </div>
             <div className="flex flex-wrap items-center gap-6 pt-4 text-caption font-caption text-on-surface-variant">
               <div className="flex items-center gap-1.5">
-                <span className="material-symbols-outlined text-primary text-[18px]">lock</span>
+                <MdLock size={18} className="text-primary" />
                 <span>Jaminan Kerahasiaan Identitas (Anonim)</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <span className="material-symbols-outlined text-primary text-[18px]">bolt</span>
+                <MdBolt size={18} className="text-primary" />
                 <span>Disposisi Cepat &lt; 24 Jam Kerja</span>
               </div>
             </div>
@@ -64,7 +66,7 @@ export const Hero = () => {
                   <div className="flex items-center gap-1">
                     <span className="font-headline-lg text-headline-lg text-primary font-bold">4.8</span>
                     <div className="flex text-primary">
-                      <span className="material-symbols-outlined text-[20px]" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+                      <MdStar size={20} />
                     </div>
                   </div>
                   <span className="font-label-sm text-label-sm text-on-surface font-semibold">Indeks Kepuasan Warga</span>
@@ -74,7 +76,7 @@ export const Hero = () => {
               <div className="p-3 bg-surface-container-low/60 rounded-lg flex items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                    <span className="material-symbols-outlined text-[20px]">trending_up</span>
+                    <MdTrendingUp size={20} className="text-primary" />
                   </div>
                   <div>
                     <p className="font-label-md text-label-md text-on-surface font-medium">Penyelesaian Bulan Ini</p>

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { MdAccountCircle, MdApartment, MdStar, MdArrowForward } from 'react-icons/md'
 
 export const AduanPublik = ({ data: propData }) => {
   const defaultData = [
@@ -124,23 +125,23 @@ export const AduanPublik = ({ data: propData }) => {
                   </div>
                   <div className="flex flex-col gap-1 text-caption font-caption text-on-surface-variant pt-1">
                     <div className="flex items-center gap-1.5">
-                      <span className="material-symbols-outlined text-[16px] text-outline">account_circle</span>
+                      <MdAccountCircle size={16} className="text-outline" />
                       <span>Pelapor: {pengaduan.pengadap || 'Warga'}</span>
                     </div>
                     <div className="flex items-center gap-1.5">
-                      <span className="material-symbols-outlined text-[16px] text-outline">apartment</span>
+                      <MdApartment size={16} className="text-outline" />
                       <span className="truncate">{pengaduan.instansi}</span>
                     </div>
                   </div>
                 </div>
                 <div className="mt-space-md pt-space-xs flex items-center justify-between text-caption font-caption border-t border-surface-container">
                   <div className="flex items-center gap-1 text-primary">
-                    <span className="material-symbols-outlined text-[16px]" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+                    <MdStar size={16} className="text-primary" />
                     <span className="font-bold">{pengaduan.rating || '5.0'}</span>
                     <span className="text-on-surface-variant">(Puas)</span>
                   </div>
                   <a className="text-primary font-label-sm text-label-sm hover:underline inline-flex items-center gap-0.5 font-semibold" href="#lacak-tiket">
-                    Rincian Respon <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+                    Rincian Respon <MdArrowForward size={16} />
                   </a>
                 </div>
               </div>

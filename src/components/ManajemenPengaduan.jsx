@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { supabaseApi } from '../supabaseClient'
+import { MdInbox, MdPublic, MdSearch, MdArrowBack, MdNotifications, MdShield, MdSchedule, MdFileDownload, MdAddCircle, MdTrendingUp, MdForwardToInbox, MdBuild, MdVerified, MdStar, MdFilterList, MdAccountBalance, MdCalendarToday, MdRefresh, MdHourglassEmpty, MdErrorOutline, MdLocationOn, MdPhotoCamera, MdAssignmentTurnedIn, MdAssignment, MdVerifiedUser, MdZoomIn, MdExpandMore, MdSendToMobile, MdUploadFile, MdSave, MdPriorityHigh, MdSupportAgent, MdClose, MdCheckCircle } from 'react-icons/md'
 
 const STATUS_OPTIONS = [
   { value: 'baru', label: '1. Baru Masuk (Antrean Tinjau)' },
@@ -178,7 +179,7 @@ export const ManajemenPengaduan = () => {
               data-path="manajemen-pengaduan"
               href="#"
             >
-              <span className="material-symbols-outlined text-[20px]">inbox</span>
+              <MdInbox size={20} className="text-on-primary-container" />
               <span className="font-label-md text-label-md">Manajemen Tiket</span>
             </a>
             <Link
@@ -186,7 +187,7 @@ export const ManajemenPengaduan = () => {
               className="flex items-center gap-3 px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors"
               data-path="portal-pengaduan-masyarakat"
             >
-              <span className="material-symbols-outlined text-[20px]">public</span>
+              <MdPublic size={20} className="text-on-surface-variant" />
               <span className="font-label-md text-label-md">Lihat Portal Publik</span>
             </Link>
           </nav>
@@ -207,7 +208,7 @@ export const ManajemenPengaduan = () => {
         <header className="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-margin">
           <div className="flex items-center gap-space-sm flex-1 max-w-md">
             <div className="flex items-center gap-2 w-full px-space-md py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant">
-              <span className="material-symbols-outlined text-[18px]">search</span>
+              <MdSearch size={18} className="text-on-surface-variant" />
               <span className="font-body-sm text-body-sm text-outline">
                 Cari nomor tiket (#LAPOR-XXXXX)...
               </span>
@@ -219,7 +220,7 @@ export const ManajemenPengaduan = () => {
               className="hidden sm:flex items-center gap-1.5 px-space-sm py-1 rounded-lg text-primary hover:bg-surface-container-high transition-colors font-label-md text-label-md"
               data-path="portal-pengaduan-masyarakat"
             >
-              <span className="material-symbols-outlined text-[18px]">arrow_back</span>
+              <MdArrowBack size={18} className="text-primary" />
               <span className="">Ke Portal Publik</span>
             </Link>
             <button
@@ -227,7 +228,7 @@ export const ManajemenPengaduan = () => {
               className="relative p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors"
               type="button"
             >
-              <span className="material-symbols-outlined text-[22px]">notifications</span>
+              <MdNotifications size={22} className="text-on-surface-variant" />
               <span className="absolute top-1.5 right-1.5 w-2.5 h-2.5 bg-tertiary rounded-full ring-2 ring-surface-container-lowest"></span>
             </button>
             <div className="flex items-center gap-space-sm pl-space-sm">
@@ -250,7 +251,7 @@ export const ManajemenPengaduan = () => {
             <section className="w-full bg-surface-container-lowest px-margin py-space-sm flex flex-wrap items-center justify-between gap-space-sm shadow-sm">
               <div className="flex items-center gap-space-sm min-w-0">
                 <div className="p-2 rounded-lg bg-surface-container-high text-primary flex items-center justify-center">
-                  <span className="material-symbols-outlined text-[20px]">shield_person</span>
+                  <MdShield size={20} className="text-primary" />
                 </div>
                 <div className="flex flex-col min-w-0">
                   <div className="flex items-center gap-2">
@@ -269,7 +270,7 @@ export const ManajemenPengaduan = () => {
               </div>
               <div className="flex items-center gap-space-sm flex-wrap">
                 <div className="hidden xl:flex items-center gap-space-xs px-space-md py-1.5 rounded-full bg-surface-container text-on-surface-variant">
-                  <span className="material-symbols-outlined text-[18px] text-primary">schedule</span>
+                  <MdSchedule size={18} className="text-primary" />
                   <span className="font-caption text-caption">
                     SLA Rata-rata Penanganan:{' '}
                     <strong className="text-on-surface">2.4 Hari Kerja</strong>
@@ -281,7 +282,7 @@ export const ManajemenPengaduan = () => {
                   type="button"
                   onClick={handleEkspor}
                 >
-                  <span className="material-symbols-outlined text-[18px]">file_download</span>
+                  <MdFileDownload size={18} />
                   <span className="">Ekspor Rekap (XLS/PDF)</span>
                 </button>
                 <button
@@ -290,7 +291,7 @@ export const ManajemenPengaduan = () => {
                   type="button"
                   onClick={handleOpenWalkIn}
                 >
-                  <span className="material-symbols-outlined text-[18px]">add_circle</span>
+                  <MdAddCircle size={18} className="text-on-primary" />
                   <span className="">+ Input Pengaduan Walk-in</span>
                 </button>
               </div>
@@ -305,16 +306,14 @@ export const ManajemenPengaduan = () => {
                     <span className="font-caption text-caption text-on-surface-variant font-medium">
                       Total Aduan Masuk
                     </span>
-                    <span className="p-1.5 rounded-lg bg-surface-container-low text-primary material-symbols-outlined text-[18px]">
-                      inbox
-                    </span>
+                    <MdInbox size={18} className="text-primary" />
                   </div>
                   <div className="mt-space-sm">
                     <div className="font-headline-lg text-headline-lg text-on-surface font-extrabold tracking-tight">
                       {tickets.length}
                     </div>
                     <div className="flex items-center gap-1 font-caption text-caption text-primary mt-1">
-                      <span className="material-symbols-outlined text-[14px]">trending_up</span>
+                      <MdTrendingUp size={14} className="text-primary" />
                       <span className="">+12% bln ini</span>
                     </div>
                   </div>
@@ -342,9 +341,7 @@ export const ManajemenPengaduan = () => {
                     <span className="font-caption text-caption text-on-surface-variant font-medium">
                       Disposisi OPD
                     </span>
-                    <span className="p-1.5 rounded-lg bg-secondary-fixed text-on-secondary-fixed material-symbols-outlined text-[18px]">
-                      forward_to_inbox
-                    </span>
+                    <MdForwardToInbox size={18} className="text-on-secondary-fixed" />
                   </div>
                   <div className="mt-space-sm">
                     <div className="font-headline-lg text-headline-lg text-secondary font-extrabold tracking-tight">
@@ -361,9 +358,7 @@ export const ManajemenPengaduan = () => {
                     <span className="font-caption text-caption text-on-surface-variant font-medium">
                       Sedang Ditindak
                     </span>
-                    <span className="p-1.5 rounded-lg bg-surface-container-high text-on-surface material-symbols-outlined text-[18px]">
-                      build
-                    </span>
+                    <MdBuild size={18} className="text-on-surface" />
                   </div>
                   <div className="mt-space-sm">
                     <div className="font-headline-lg text-headline-lg text-on-surface font-extrabold tracking-tight">
@@ -380,9 +375,7 @@ export const ManajemenPengaduan = () => {
                     <span className="font-caption text-caption text-primary font-medium">
                       Selesai Teratasi
                     </span>
-                    <span className="p-1.5 rounded-lg bg-primary-fixed text-on-primary-fixed material-symbols-outlined text-[18px]">
-                      verified
-                    </span>
+                    <MdVerified size={18} className="text-on-primary-fixed" />
                   </div>
                   <div className="mt-space-sm">
                     <div className="font-headline-lg text-headline-lg text-primary font-extrabold tracking-tight">
@@ -400,12 +393,7 @@ export const ManajemenPengaduan = () => {
                       Indeks Kepuasan
                     </span>
                     <div className="flex items-center text-primary">
-                      <span
-                        className="material-symbols-outlined text-[18px]"
-                        style={{ fontVariationSettings: "'FILL' 1" }}
-                      >
-                        star
-                      </span>
+                      <MdStar size={18} className="text-primary" />
                     </div>
                   </div>
                   <div className="mt-space-sm">
@@ -427,7 +415,7 @@ export const ManajemenPengaduan = () => {
             <section className="px-margin py-space-sm">
               <div className="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-md">
                 <div className="relative flex-1 min-w-[280px]">
-                  <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+                  <MdSearch size={20} className="absolute left-3 top-1/2 -translate-y-1/2 text-outline" />
                   <input
                     className="w-full pl-10 pr-4 py-2.5 rounded-lg bg-surface-container-low text-on-surface placeholder:text-outline font-body-sm text-body-sm focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all"
                     id="filterKeyword"
@@ -439,7 +427,7 @@ export const ManajemenPengaduan = () => {
                 </div>
                 <div className="flex flex-wrap items-center gap-space-sm">
                   <div className="flex items-center gap-1.5 bg-surface-container-low px-space-sm py-1.5 rounded-lg">
-                    <span className="material-symbols-outlined text-[16px] text-outline">filter_list</span>
+                    <MdFilterList size={16} className="text-outline" />
                     <select
                       className="bg-transparent text-on-surface font-label-md text-label-md focus:outline-none cursor-pointer"
                       id="filterStatus"
@@ -455,7 +443,7 @@ export const ManajemenPengaduan = () => {
                     </select>
                   </div>
                   <div className="flex items-center gap-1.5 bg-surface-container-low px-space-sm py-1.5 rounded-lg">
-                    <span className="material-symbols-outlined text-[16px] text-outline">account_balance</span>
+                    <MdAccountBalance size={16} className="text-outline" />
                     <select
                       className="bg-transparent text-on-surface font-label-md text-label-md focus:outline-none cursor-pointer"
                       id="filterOpd"
@@ -472,7 +460,7 @@ export const ManajemenPengaduan = () => {
                     </select>
                   </div>
                   <div className="flex items-center gap-1.5 bg-surface-container-low px-space-sm py-1.5 rounded-lg">
-                    <span className="material-symbols-outlined text-[16px] text-outline">calendar_today</span>
+                    <MdCalendarToday size={16} className="text-outline" />
                     <select
                       className="bg-transparent text-on-surface font-label-md text-label-md focus:outline-none cursor-pointer"
                       id="filterDate"
@@ -492,7 +480,7 @@ export const ManajemenPengaduan = () => {
                     type="button"
                     onClick={handleResetFilter}
                   >
-                    <span className="material-symbols-outlined text-[20px]">refresh</span>
+                    <MdRefresh size={20} />
                   </button>
                 </div>
               </div>
@@ -519,17 +507,17 @@ export const ManajemenPengaduan = () => {
 
                   {loading ? (
                     <div className="p-space-lg flex flex-col items-center justify-center text-center">
-                      <span className="material-symbols-outlined text-[40px] text-outline animate-pulse">hourglass_empty</span>
+                      <MdHourglassEmpty size={40} className="text-outline animate-pulse" />
                       <span className="font-caption text-caption text-on-surface-variant mt-space-sm">Memuat data pengaduan...</span>
                     </div>
                   ) : filteredTickets.length === 0 ? (
                     <div className="p-space-lg flex flex-col items-center justify-center text-center">
-                      <span className="material-symbols-outlined text-[40px] text-outline opacity-40">inbox</span>
+                      <MdInbox size={40} className="text-outline opacity-40" />
                       <span className="font-caption text-caption text-on-surface-variant mt-space-sm">Tidak ada data pengaduan yang ditemukan.</span>
                     </div>
                   ) : error ? (
                     <div className="p-space-lg flex flex-col items-center justify-center text-center">
-                      <span className="material-symbols-outlined text-[40px] text-error">error_outline</span>
+                      <MdErrorOutline size={40} className="text-error" />
                       <span className="font-caption text-caption text-error mt-space-sm">{error}</span>
                       <button
                         className="mt-space-md px-3 py-1 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high font-label-sm text-label-sm"
@@ -589,7 +577,7 @@ export const ManajemenPengaduan = () => {
                                 </td>
                                 <td className="py-3.5 px-4 whitespace-nowrap">
                                   <div className="flex items-center gap-1 text-on-surface font-label-md text-label-md">
-                                    <span className="material-symbols-outlined text-[16px] text-outline">location_on</span>
+                                    <MdLocationOn size={16} className="text-outline" />
                                     <span className="">{ticket.lokasi_kejadian}</span>
                                   </div>
                                   <div className="text-secondary font-label-sm text-label-sm mt-0.5">{ticket.instansi_tujuan}</div>
@@ -597,7 +585,7 @@ export const ManajemenPengaduan = () => {
                                 <td className="py-3.5 px-4 text-center whitespace-nowrap">
                                   {ticket.lampiran_bukti ? (
                                     <button className="p-1.5 rounded-lg bg-surface-container text-primary hover:bg-surface-container-high transition-colors" title="Lihat Bukti" type="button">
-                                      <span className="material-symbols-outlined text-[18px]">photo_camera</span>
+                                      <MdPhotoCamera size={18} className="text-primary" />
                                     </button>
                                   ) : (
                                     <span className="font-caption text-caption text-outline">-</span>
@@ -695,7 +683,7 @@ export const ManajemenPengaduan = () => {
                 <div className="bg-surface-container-lowest p-space-lg rounded-xl shadow-md flex flex-col gap-space-md">
                   <div className="flex items-center justify-between pb-space-sm bg-surface-container-lowest">
                     <div className="flex items-center gap-2">
-                      <span className="material-symbols-outlined text-primary text-[22px]">assignment_turned_in</span>
+                      <MdAssignmentTurnedIn size={22} className="text-primary" />
                       <span className="font-title-md text-title-md text-on-surface font-bold">
                         Penanganan Tiket
                       </span>
@@ -707,7 +695,7 @@ export const ManajemenPengaduan = () => {
 
                   {!selectedTicket ? (
                     <div className="p-space-md flex flex-col items-center justify-center text-center opacity-50">
-                      <span className="material-symbols-outlined text-[40px] text-outline">assignment</span>
+                      <MdAssignment size={40} className="text-outline" />
                       <span className="font-caption text-caption text-on-surface-variant mt-space-sm">Pilih tiket dari tabel</span>
                     </div>
                   ) : (
@@ -721,10 +709,10 @@ export const ManajemenPengaduan = () => {
                               {selectedTicket.nama_pelapor}
                             </span>
                           </div>
-                          <span className="material-symbols-outlined text-primary text-[20px]">verified_user</span>
+                          <MdVerifiedUser size={20} className="text-primary" />
                         </div>
                         <div className="flex items-center gap-2 text-on-surface-variant">
-                          <span className="material-symbols-outlined text-[16px] text-outline">location_on</span>
+                          <MdLocationOn size={16} className="text-outline" />
                           <span className="font-caption text-caption text-on-surface" id="detailLokasi">
                             {selectedTicket.lokasi_kejadian}
                           </span>
@@ -749,7 +737,7 @@ export const ManajemenPengaduan = () => {
                               />
                               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-2.5">
                                 <span className="text-white font-caption text-caption font-semibold flex items-center gap-1">
-                                  <span className="material-symbols-outlined text-[16px]">zoom_in</span> Bukti Tiket
+                                  <MdZoomIn size={16} /> Bukti Tiket
                                 </span>
                               </div>
                             </div>
@@ -778,9 +766,7 @@ export const ManajemenPengaduan = () => {
                                 </option>
                               ))}
                             </select>
-                            <span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline pointer-events-none text-[20px]">
-                              expand_more
-                            </span>
+                            <MdExpandMore size={20} className="text-outline pointer-events-none" />
                           </div>
                         </div>
                         <div className="flex flex-col gap-1.5">
@@ -800,9 +786,7 @@ export const ManajemenPengaduan = () => {
                               <option value="satpolpp">Satpol PP & Damkar</option>
                               <option value="dinkes">Dinas Kesehatan & Puskesmas</option>
                             </select>
-                            <span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline pointer-events-none text-[20px]">
-                              account_balance
-                            </span>
+                            <MdAccountBalance size={20} className="text-outline pointer-events-none" />
                           </div>
                         </div>
                         <div className="flex flex-col gap-1.5">
@@ -811,7 +795,7 @@ export const ManajemenPengaduan = () => {
                               Tanggapan Resmi Aparatur:
                             </label>
                             <span className="font-caption text-caption text-primary flex items-center gap-1">
-                              <span className="material-symbols-outlined text-[14px]">send_to_mobile</span> Notifikasi WA Aktif
+                              <MdSendToMobile size={14} className="text-primary" /> Notifikasi WA Aktif
                             </span>
                           </div>
                           <textarea
@@ -828,7 +812,7 @@ export const ManajemenPengaduan = () => {
                           </span>
                           <div className="p-3 rounded-lg bg-surface-container-low border border-dashed border-outline-variant flex items-center justify-between cursor-pointer hover:bg-surface-container transition-colors">
                             <div className="flex items-center gap-2">
-                              <span className="material-symbols-outlined text-outline text-[20px]">upload_file</span>
+                              <MdUploadFile size={20} className="text-outline" />
                               <span className="font-caption text-caption text-on-surface-variant">
                                 Pilih foto perbaikan / PDF telaah OPD...
                               </span>
@@ -841,7 +825,7 @@ export const ManajemenPengaduan = () => {
                             className="flex-1 py-2.5 rounded-lg bg-primary text-on-primary hover:bg-primary-container font-label-md text-label-md font-semibold transition-colors flex items-center justify-center gap-1.5 shadow-sm"
                             type="submit"
                           >
-                            <span className="material-symbols-outlined text-[18px]">save</span>
+                            <MdSave size={18} className="text-on-primary" />
                             <span className="">Simpan & Kirim Update</span>
                           </button>
                           <button
@@ -850,7 +834,7 @@ export const ManajemenPengaduan = () => {
                             title="Eskalasi ke Pimpinan Daerah / Bupati / Walikota"
                             type="button"
                           >
-                            <span className="material-symbols-outlined text-[20px] text-tertiary">priority_high</span>
+                            <MdPriorityHigh size={20} className="text-tertiary" />
                           </button>
                         </div>
                       </form>
@@ -884,7 +868,7 @@ export const ManajemenPengaduan = () => {
         <div className="bg-surface-container-lowest rounded-2xl shadow-2xl w-full max-w-2xl overflow-hidden animate-fade-in flex flex-col">
           <div className="px-space-lg py-space-md bg-surface-container-low flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-primary text-[24px]">support_agent</span>
+              <MdSupportAgent size={24} className="text-primary" />
               <div className="flex flex-col">
                 <span className="font-headline-sm text-headline-sm text-on-surface font-bold">
                   Input Aduan Langsung / Walk-in Pelapor
@@ -895,7 +879,7 @@ export const ManajemenPengaduan = () => {
               </div>
             </div>
             <button className="p-1 rounded-full text-outline hover:text-on-surface hover:bg-surface-container" onClick={handleCloseWalkIn} type="button">
-              <span className="material-symbols-outlined text-[24px]">close</span>
+              <MdClose size={24} />
             </button>
           </div>
           <form className="p-space-lg flex flex-col gap-space-md max-h-[75vh] overflow-y-auto" onSubmit={handleSimpanAduanManual}>
@@ -1025,7 +1009,7 @@ export const ManajemenPengaduan = () => {
         className={`fixed bottom-6 right-6 z-50 max-w-md bg-inverse-surface text-inverse-on-surface px-space-md py-3 rounded-xl shadow-xl transition-transform ${toast.open ? 'flex items-center gap-3' : 'hidden'}`}
         id="toastNotification"
       >
-        <span className="material-symbols-outlined text-primary-fixed text-[24px]">check_circle</span>
+        <MdCheckCircle size={24} className="text-primary-fixed" />
         <div className="flex flex-col">
           <span className="font-label-md text-label-md font-bold" id="toastTitle">
             {toast.title}

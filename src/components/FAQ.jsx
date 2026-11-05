@@ -1,3 +1,5 @@
+import { MdExpandMore } from 'react-icons/md'
+
 export const FAQ = () => {
   const faqs = [
     { 
@@ -31,7 +33,7 @@ export const FAQ = () => {
             <details key={idx} className="group p-space-md rounded-2xl bg-surface-container-lowest shadow-sm border border-surface-container transition-all" open={idx === 0}>
               <summary className="flex items-center justify-between cursor-pointer font-title-md text-title-md text-on-surface list-none font-semibold">
                 <span>{faq.q}</span>
-                <span className="material-symbols-outlined text-primary group-open:rotate-180 transition-transform">expand_more</span>
+                <MdExpandMore size={18} className="text-primary group-open:rotate-180 transition-transform" />
               </summary>
               <p className="font-body-md text-body-md text-on-surface-variant mt-space-sm pt-space-xs border-t border-surface-container">
                 {faq.a}

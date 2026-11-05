@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { MdSearch, MdVisibility, MdSearchOff, MdClose } from 'react-icons/md'
 
 export const LacakTiket = ({ tickets: propTickets }) => {
   const defaultTickets = [
@@ -54,7 +55,7 @@ export const LacakTiket = ({ tickets: propTickets }) => {
         <div className="bg-surface-container-lowest rounded-2xl shadow-sm border border-surface-container p-4 md:p-6 mb-space-md">
           <div className="flex flex-col sm:flex-row items-center gap-3">
             <div className="relative w-full">
-              <span className="material-symbols-outlined absolute left-3 top-3 text-outline text-[22px]">search</span>
+              <MdSearch size={22} className="absolute left-3 top-3 text-outline" />
               <input
                 type="text"
                 placeholder="Cari berdasarkan Kode Tiket (misal: #TKT-8842), instansi, atau pokok masalah..."
@@ -122,7 +123,7 @@ export const LacakTiket = ({ tickets: propTickets }) => {
                             onClick={() => setSelectedTicket(ticket)}
                             className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-primary font-label-sm transition-all"
                           >
-                            <span className="material-symbols-outlined text-[16px]">visibility</span>
+                            <MdVisibility size={16} />
                             Rincian
                           </button>
                         </td>
@@ -133,7 +134,7 @@ export const LacakTiket = ({ tickets: propTickets }) => {
                   <tr>
                     <td colSpan="7" className="p-8 text-center text-on-surface-variant">
                       <div className="flex flex-col items-center justify-center gap-2">
-                        <span className="material-symbols-outlined text-[40px] text-outline">search_off</span>
+                        <MdSearchOff size={40} className="text-outline" />
                         <p className="font-title-md">Tiket tidak ditemukan</p>
                         <p className="text-caption">Cek kembali nomor tiket atau filter status pencarian Anda.</p>
                       </div>
@@ -159,7 +160,7 @@ export const LacakTiket = ({ tickets: propTickets }) => {
                   onClick={() => setSelectedTicket(null)}
                   className="p-1 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container"
                 >
-                  <span className="material-symbols-outlined">close</span>
+                  <MdClose />
                 </button>
               </div>
 

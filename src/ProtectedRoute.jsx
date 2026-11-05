@@ -1,5 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from './auth'
+import { MdHourglassEmpty } from 'react-icons/md'
 
 export default function ProtectedRoute({ children }) {
   const { user, loading } = useAuth()
@@ -9,7 +10,7 @@ export default function ProtectedRoute({ children }) {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-surface text-on-surface">
-        <span className="material-symbols-outlined text-primary text-[32px] animate-pulse">hourglass_empty</span>
+        <MdHourglassEmpty size={32} className="animate-pulse text-primary" />
         <span className="ml-2 font-body-md text-body-md text-on-surface-variant">Memuat sesi...</span>
       </div>
     )

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { signIn } from './auth'
+import { MdLogin } from 'react-icons/md'
 
 export default function Login() {
   const [email, setEmail] = useState('')
@@ -28,7 +29,7 @@ export default function Login() {
       <main className="flex-1 flex items-center justify-center px-4 py-8">
         <div className="max-w-md w-full bg-surface-container-lowest rounded-xl shadow-sm border border-surface-container-low p-space-lg">
           <div className="text-center mb-space-xl">
-            <span className="material-symbols-outlined text-primary text-[48px] block mx-auto mb-3">login</span>
+            <MdLogin size={48} className="block mx-auto mb-3 text-primary" />
             <h1 className="font-headline-lg text-headline-lg text-on-surface font-bold">Masuk</h1>
             <p className="font-body-sm text-body-sm text-on-surface-variant mt-1">Selamat datang kembali ke LAPOR-DAERAH</p>
           </div>

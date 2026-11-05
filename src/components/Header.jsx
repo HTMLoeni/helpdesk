@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth, signOut } from '../auth'
+import { MdAccountBalance, MdLogin, MdVerified, MdAddCircle, MdClose, MdMenu } from 'react-icons/md'
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -29,7 +30,7 @@ export const Header = () => {
         <div className="flex items-center gap-space-lg">
           <a href="#" className="flex items-center gap-3 group">
             <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-sm group-hover:scale-105 transition-transform">
-              <span className="material-symbols-outlined text-[24px]">account_balance</span>
+              <MdAccountBalance size={24} className="text-on-primary" />
             </div>
             <div className="flex flex-col">
               <span className="font-title-md text-title-md text-primary font-bold tracking-tight">LAPOR-DAERAH</span>
@@ -64,16 +65,16 @@ export const Header = () => {
               to="/login"
               className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md transition-colors shadow-sm transition-all"
             >
-              <span className="material-symbols-outlined text-[18px]">login</span>
+              <MdLogin size={18} className="text-on-primary" />
               Masuk
             </Link>
           )}
           <a className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-primary font-label-md transition-colors" href="#lacak-tiket">
-            <span className="material-symbols-outlined text-[18px]">verified</span>
+            <MdVerified size={18} className="text-primary" />
             Cek Status
           </a>
           <a className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md shadow-sm transition-all" href="#lapor-form">
-            <span className="material-symbols-outlined text-[18px]">add_circle</span>
+            <MdAddCircle size={18} className="text-on-primary" />
             Lapor Sekarang
           </a>
           <button 
@@ -82,7 +83,7 @@ export const Header = () => {
             className="lg:hidden p-2 rounded-lg text-on-surface hover:bg-surface-container"
             aria-label="Toggle Menu"
           >
-            <span className="material-symbols-outlined text-[24px]">{mobileMenuOpen ? 'close' : 'menu'}</span>
+            {mobileMenuOpen ? <MdClose size={24} className="text-on-surface" /> : <MdMenu size={24} className="text-on-surface" />}
           </button>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { signUp } from './auth'
+import { MdPersonAdd } from 'react-icons/md'
 
 export default function Register() {
   const [email, setEmail] = useState('')
@@ -28,7 +29,7 @@ export default function Register() {
       <main className="flex-1 flex items-center justify-center px-4 py-8">
         <div className="max-w-md w-full bg-surface-container-lowest rounded-xl shadow-sm border border-surface-container-low p-space-lg">
           <div className="text-center mb-space-xl">
-            <span className="material-symbols-outlined text-primary text-[48px] block mx-auto mb-3">person_add</span>
+            <MdPersonAdd size={48} className="block mx-auto mb-3 text-primary" />
             <h1 className="font-headline-lg text-headline-lg text-on-surface font-bold">Daftar Akun</h1>
             <p className="font-body-sm text-body-sm text-on-surface-variant mt-1">Buat akun admin LAPOR-DAERAH</p>
           </div>
